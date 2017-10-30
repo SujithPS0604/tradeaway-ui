@@ -8,7 +8,7 @@ export const MODULE_ROUTES: Route[] =[
     { path: 'dashboard', component: HomeComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'signin', component: SignInComponent },
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+    { path: '', redirectTo: 'signin', pathMatch: 'full' }
 ]
 
 export const MODULE_COMPONENTS = [

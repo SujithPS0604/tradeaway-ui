@@ -10,15 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
+var user_service_1 = require("../service/user.service");
 var SignInComponent = (function () {
-    function SignInComponent(formBuilder) {
-        this.form = formBuilder.group({});
+    function SignInComponent(userService, router) {
+        this.userService = userService;
+        this.router = router;
+        this.form = new forms_1.FormGroup({
+            email: new forms_1.FormControl(),
+            password: new forms_1.FormControl()
+        });
     }
     SignInComponent.prototype.ngOnInit = function () {
         //init
     };
-    SignInComponent.prototype.save = function () {
-        console.log('hello');
+    SignInComponent.prototype.signin = function () {
+        this.userService.verifyUser(this.form.value);
     };
     return SignInComponent;
 }());
@@ -28,7 +35,8 @@ SignInComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'signin.component.html'
     }),
-    __metadata("design:paramtypes", [forms_1.FormBuilder])
+    __metadata("design:paramtypes", [user_service_1.UserService,
+        router_1.Router])
 ], SignInComponent);
 exports.SignInComponent = SignInComponent;
 //# sourceMappingURL=signin.component.js.map

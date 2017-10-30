@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
+import {UserService} from './service/user.service';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {HttpModule} from '@angular/http';
 	    HttpModule,
 	    RouterModule.forChild(MODULE_ROUTES)
     ],
-    declarations: [ MODULE_COMPONENTS ]
+    declarations: [ MODULE_COMPONENTS ],
+    providers: [ UserService ]
 })
 
 export class DashboardModule{}

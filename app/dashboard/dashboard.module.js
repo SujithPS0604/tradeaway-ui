@@ -11,6 +11,7 @@ var dashboard_routes_1 = require("./dashboard.routes");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
+var user_service_1 = require("./service/user.service");
 var DashboardModule = (function () {
     function DashboardModule() {
     }
@@ -26,7 +27,8 @@ DashboardModule = __decorate([
             http_1.HttpModule,
             router_1.RouterModule.forChild(dashboard_routes_1.MODULE_ROUTES)
         ],
-        declarations: [dashboard_routes_1.MODULE_COMPONENTS]
+        declarations: [dashboard_routes_1.MODULE_COMPONENTS],
+        providers: [user_service_1.UserService]
     })
 ], DashboardModule);
 exports.DashboardModule = DashboardModule;

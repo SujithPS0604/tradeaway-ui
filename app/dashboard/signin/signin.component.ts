@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import {User} from '../user/user';
+import {UserService} from '../service/user.service';
 
 @Component({
     selector: 'signin-cmp',
@@ -11,20 +13,20 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class SignInComponent implements OnInit{
 
-	form: FormGroup;
+  form = new FormGroup({
+    email: new FormControl(),
+    password: new FormControl()
+  });
 
+  constructor(private userService: UserService,
+   private router: Router) {
+  }
 
-  constructor( formBuilder: FormBuilder ) {
-   	 this.form = formBuilder.group({
-    	});
-   }
-
-   
     ngOnInit(){
        //init
     }
 
-    save() {
-       console.log('hello')
+    signin() {
+     this.userService.verifyUser(this.form.value)
     }
 }
