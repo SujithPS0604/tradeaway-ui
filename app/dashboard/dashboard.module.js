@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var dashboard_routes_1 = require("./dashboard.routes");
+var common_1 = require("@angular/common");
+var forms_1 = require("@angular/forms");
+var http_1 = require("@angular/http");
 var DashboardModule = (function () {
     function DashboardModule() {
     }
@@ -16,6 +19,11 @@ var DashboardModule = (function () {
 DashboardModule = __decorate([
     core_1.NgModule({
         imports: [
+            common_1.CommonModule,
+            forms_1.FormsModule,
+            forms_1.ReactiveFormsModule,
+            router_1.RouterModule,
+            http_1.HttpModule,
             router_1.RouterModule.forChild(dashboard_routes_1.MODULE_ROUTES)
         ],
         declarations: [dashboard_routes_1.MODULE_COMPONENTS]

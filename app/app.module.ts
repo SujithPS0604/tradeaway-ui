@@ -16,7 +16,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
         DashboardModule,
         RouterModule.forRoot([])
     ],
-    declarations: [ AppComponent, DashboardComponent ],
+    declarations: [ AppComponent, DashboardComponent ], 
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
