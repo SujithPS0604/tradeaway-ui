@@ -18,7 +18,7 @@ var options = new http_1.RequestOptions({ headers: headers });
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
-        this.url = "http://localhost:9000/users";
+        this.url = "http://localhost:8080/buyer";
     }
     UserService.prototype.getUsers = function () {
         return this.http.get(this.url)
@@ -31,8 +31,21 @@ var UserService = (function () {
     UserService.prototype.verifyUser = function (user) {
         console.log('verifying user : ');
         console.info(user);
+        /* this.usersService.getUser(id)
+           .subscribe(
+             user => {
+   
+              this.user = user;
+              this.jsInitOnLoad();
+   
+             },
+             response => {
+               if (response.status == 404) {
+                 this.router.navigate(['NotFound']);
+               }
+             }); */
     };
-    UserService.prototype.addUser = function (user) {
+    UserService.prototype.registerUser = function (user) {
         return this.http.post(this.url, JSON.stringify(user), options)
             .map(function (res) { return res.json(); });
     };

@@ -12,7 +12,7 @@ let options = new RequestOptions({ headers: headers });
 @Injectable()
 export class UserService {
 
-  private url: string = "http://localhost:9000/users";
+  private url: string = "http://localhost:8080/buyer";
 
   constructor(private http: Http) { }
 
@@ -28,13 +28,30 @@ export class UserService {
 
   verifyUser(user){
      console.log('verifying user : ' )
-     console.info(user)
+     console.info(user);
+
+
+     /* this.usersService.getUser(id)
+        .subscribe(
+          user => {
+
+           this.user = user;
+           this.jsInitOnLoad();
+
+          },
+          response => {
+            if (response.status == 404) {
+              this.router.navigate(['NotFound']);
+            }
+          }); */
   }
 
-  addUser(user){
+  registerUser(user){
     return this.http.post(this.url, JSON.stringify(user),options)
       .map(res => res.json());
   }
+
+
 
   updateUser(user){
     return this.http.put(this.getUserUrl(user.id), JSON.stringify(user),options)
