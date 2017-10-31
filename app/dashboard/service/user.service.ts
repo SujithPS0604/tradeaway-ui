@@ -12,7 +12,7 @@ let options = new RequestOptions({ headers: headers });
 @Injectable()
 export class UserService {
 
-  private url: string = "http://localhost:8080/buyer";
+  private url: string = "http://localhost:8080/";
 
   constructor(private http: Http) { }
 
@@ -27,15 +27,16 @@ export class UserService {
   }
 
   verifyUser(user){
-     console.log('verifying user : ' );
-     console.info(user);
+      let headers = new Headers();
+      headers.append("Authorization", "Basic " + btoa(user.userName + ":" + user.password)); 
+      headers.append("Content-Type", "application/x-www-form-urlencoded");
 
-
-     return user.userName=='ss' ?  {'type':'register'} : null;
+     return this.http.get(this.url+"login",{ headers: headers })
+      .map(res => res.json());
   }
 
   registerUser(user){
-    return this.http.post(this.url, JSON.stringify(user),options)
+    return this.http.post(this.url+user.type.toLowerCase(), JSON.stringify(user),options)
       .map(res => res.json());
   }
 

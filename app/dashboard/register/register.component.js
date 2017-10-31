@@ -27,6 +27,8 @@ var RegisterComponent = (function () {
             type: new forms_1.FormControl(),
             gender: new forms_1.FormControl(),
             dob: new forms_1.FormControl(),
+            pan: new forms_1.FormControl(),
+            experience: new forms_1.FormControl(),
         });
         this.types = [
             { value: 'SELLER', display: 'Seller' },
@@ -46,10 +48,8 @@ var RegisterComponent = (function () {
             .subscribe(function (user) {
             console.log(user);
             _this.router.navigate(['signin']);
-        }, function (response) {
-            if (response.status == 404) {
-                _this.router.navigate(['NotFound']);
-            }
+        }, function (error) {
+            _this.router.navigate(['notfound']);
         });
     };
     return RegisterComponent;

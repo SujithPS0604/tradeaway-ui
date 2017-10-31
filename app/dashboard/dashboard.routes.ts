@@ -5,7 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { SignInComponent } from './signin/signin.component';
 
 export const MODULE_ROUTES: Route[] =[
-    { path: 'dashboard', component: HomeComponent },
+    { path: 'notfound', component: HomeComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'signin', component: SignInComponent },
     { path: '', redirectTo: 'signin', pathMatch: 'full' }

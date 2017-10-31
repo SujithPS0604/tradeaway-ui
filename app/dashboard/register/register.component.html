@@ -26,13 +26,6 @@
         <label for="mobile" class="sr-only">Mobile</label>
         <input type="text"  formControlName="mobile" id="mobile" class="form-control" placeholder="Enter Mobile" required pattern="[1-9][0-9]{9}">
 
-        <label for="gender" class="sr-only">Gender</label>
-        <select name="gender" id="gender" class="form-control" formControlName="gender">
-            <option *ngFor="let gender of genders" [value]="gender.value">  
-                {{gender.display}}
-            </option>
-        </select>
-
 
         <label for="type" class="sr-only">Type</label>
         <select name="type" id="type" class="form-control" formControlName="type" [(ngModel)]="type">
@@ -41,12 +34,33 @@
             </option>
         </select>
 
-         <div *ngIf="type=='BUYER'" ></div>
+         <div *ngIf="type=='BUYER'" >
+             
+                <label for="gender" class="sr-only">Gender</label>
+                <select name="gender" id="gender" class="form-control" formControlName="gender">
+                    <option *ngFor="let gender of genders" [value]="gender.value">  
+                        {{gender.display}}
+                    </option>
+                </select>
 
-        <label for="dob" class="sr-only">Date of Birth</label>
-        <input type="date" formControlName="dob" name="dob" id="dob" class="form-control padding-10">
- 
+                <label for="dob" class="sr-only">Date of Birth</label>
+                <input type="date" formControlName="dob" name="dob" id="dob" class="form-control">
+
+         </div>
+
+         <div *ngIf="type=='SELLER'" >
+             
+                <label for="pan" class="sr-only">PAN</label> 
+                 <input type="text"  formControlName="pan" id="pan" class="form-control" placeholder="PAN" required autofocus>
+
+                <label for="experience" class="sr-only">Experience</label>
+                 <input type="text"  formControlName="experience" id="experience" class="form-control" placeholder="Experience" required autofocus required pattern="[0-9]*">
+
+         </div>
+
         
+ 
+        <div class="padding-10"></div>
         <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Register</button>
 
         <p class="message">Already registered? <a href="/signin">Sign in</a></p>

@@ -24,6 +24,8 @@ export class RegisterComponent implements OnInit{
     type: new FormControl(),
     gender: new FormControl(),
     dob: new FormControl(),
+    pan: new FormControl(),
+    experience: new FormControl(),
   });
 
 
@@ -54,10 +56,8 @@ export class RegisterComponent implements OnInit{
             this.router.navigate(['signin']);
 
           },
-          response => {
-            if (response.status == 404) {
-              this.router.navigate(['NotFound']);
-            }
+          error => {
+              this.router.navigate(['notfound']);
         });
     }
 }

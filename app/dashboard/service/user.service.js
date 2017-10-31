@@ -18,7 +18,7 @@ var options = new http_1.RequestOptions({ headers: headers });
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
-        this.url = "http://localhost:8080/buyer";
+        this.url = "http://localhost:8080/";
     }
     UserService.prototype.getUsers = function () {
         return this.http.get(this.url)
@@ -29,12 +29,14 @@ var UserService = (function () {
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.verifyUser = function (user) {
-        console.log('verifying user : ');
-        console.info(user);
-        return user.userName == 'ss' ? { 'type': 'register' } : null;
+        var headers = new http_1.Headers();
+        headers.append("Authorization", "Basic " + btoa(user.userName + ":" + user.password));
+        headers.append("Content-Type", "application/x-www-form-urlencoded");
+        return this.http.get(this.url + "login", { headers: headers })
+            .map(function (res) { return res.json(); });
     };
     UserService.prototype.registerUser = function (user) {
-        return this.http.post(this.url, JSON.stringify(user), options)
+        return this.http.post(this.url + user.type.toLowerCase(), JSON.stringify(user), options)
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.updateUser = function (user) {

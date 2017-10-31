@@ -29,15 +29,17 @@ export class SignInComponent implements OnInit{
     }
 
     signin() {
-		this.signinMessage="";
+		   this.userService.verifyUser(this.form.value)
+        .subscribe(
+          data => {
+            console.log(data);
 
-       var res=this.userService.verifyUser(this.form.value);
+            this.router.navigate(['register']);
 
-       if(res && res.type){
-       		this.router.navigate(['register']);
-       }else {
-          this.signinMessage="Wrong Credentials";
-       }
+          },
+          error => {
+             this.signinMessage="Wrong credentials!!! ";
+        });
               
     }
 }

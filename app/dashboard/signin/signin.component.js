@@ -26,14 +26,14 @@ var SignInComponent = (function () {
         //init
     };
     SignInComponent.prototype.signin = function () {
-        this.signinMessage = "";
-        var res = this.userService.verifyUser(this.form.value);
-        if (res && res.type) {
-            this.router.navigate(['register']);
-        }
-        else {
-            this.signinMessage = "Wrong Credentials";
-        }
+        var _this = this;
+        this.userService.verifyUser(this.form.value)
+            .subscribe(function (data) {
+            console.log(data);
+            _this.router.navigate(['register']);
+        }, function (error) {
+            _this.signinMessage = "Wrong credentials!!! ";
+        });
     };
     return SignInComponent;
 }());
