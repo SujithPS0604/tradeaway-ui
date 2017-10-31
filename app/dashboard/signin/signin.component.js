@@ -30,7 +30,7 @@ var SignInComponent = (function () {
         this.userService.verifyUser(this.form.value)
             .subscribe(function (data) {
             console.log(data);
-            _this.router.navigate(['register']);
+            _this.router.navigate(['seller-home']);
         }, function (error) {
             _this.signinMessage = "Wrong credentials!!! ";
         });

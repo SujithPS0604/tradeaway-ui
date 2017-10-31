@@ -34,7 +34,7 @@ export class SignInComponent implements OnInit{
           data => {
             console.log(data);
 
-            this.router.navigate(['register']);
+            this.router.navigate(['seller-home']);
 
           },
           error => {

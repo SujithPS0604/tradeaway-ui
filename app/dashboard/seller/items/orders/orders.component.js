@@ -6,19 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
-var UserComponent = (function () {
-    function UserComponent() {
+var OrdersComponent = (function () {
+    function OrdersComponent() {
     }
-    UserComponent.prototype.ngOnInit = function () {
+    OrdersComponent.prototype.ngOnInit = function () {
+        //init
     };
-    return UserComponent;
+    return OrdersComponent;
 }());
-UserComponent = __decorate([
+OrdersComponent = __decorate([
     core_1.Component({
-        selector: 'user-cmp',
+        selector: 'orders-cmp',
         moduleId: module.id,
-        templateUrl: 'user.component.html'
+        templateUrl: 'orders.component.html'
     })
-], UserComponent);
-exports.UserComponent = UserComponent;
-//# sourceMappingURL=user.component.js.map
+], OrdersComponent);
+exports.OrdersComponent = OrdersComponent;
+//# sourceMappingURL=orders.component.js.map

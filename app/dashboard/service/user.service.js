@@ -32,8 +32,8 @@ var UserService = (function () {
         var headers = new http_1.Headers();
         headers.append("Authorization", "Basic " + btoa(user.userName + ":" + user.password));
         headers.append("Content-Type", "application/x-www-form-urlencoded");
-        return this.http.get(this.url + "login", { headers: headers })
-            .map(function (res) { return res.json(); });
+        return this.http.get(this.url, { headers: headers })
+            .map(function (res) { return res; });
     };
     UserService.prototype.registerUser = function (user) {
         return this.http.post(this.url + user.type.toLowerCase(), JSON.stringify(user), options)

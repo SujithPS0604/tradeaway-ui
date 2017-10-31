@@ -1,0 +1,40 @@
+<div class="container">
+
+
+      <form class="form-signin" [formGroup]="form" id="registerForm">
+       
+        <h2 class="form-signin-heading">Add New Item</h2>
+
+        <label for="item" class="sr-only">Item</label>
+        <select name="item" id="item" class="form-control" formControlName="item" [(ngModel)]="item" >
+             <option *ngFor="let item of items" [value]="item.name">  
+                {{item.name}}
+            </option>
+        </select>
+
+        <label for="category" class="sr-only">Category</label>
+          <select name="category" id="category" class="form-control" formControlName="category" [(ngModel)]="category" >
+             <option *ngFor="let category of categories" [value]="category.name">  
+                {{category.name}}
+            </option>
+        </select>
+
+        <label for="image" class="sr-only padding-10">Image</label>
+        <input type="file"  formControlName="image" id="image" class="form-control" placeholder="Select image">
+
+        <label for="description" class="sr-only padding-10">Short Description</label>
+        <input type="textarea"  formControlName="description" id="description" class="form-control" placeholder="Enter Description" required rows="4">
+        
+        <label for="qauntity" class="sr-only padding-10">Quantity</label>
+        <input type="text" formControlName="quantity" id="quantity" class="form-control" placeholder="Quantity" required pattern="[0-9]*">
+
+        <label for="price" class="sr-only padding-10">Price</label>
+        <input type="text" formControlName="price" id="price" class="form-control" placeholder="Price" required pattern="[0-9]*(.[0-9]*)?">
+ 
+        <div class="padding-10"></div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="submit">Add Item</button>
+
+         
+      </form>
+
+</div> 

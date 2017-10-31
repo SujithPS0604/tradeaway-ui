@@ -31,8 +31,8 @@ export class UserService {
       headers.append("Authorization", "Basic " + btoa(user.userName + ":" + user.password)); 
       headers.append("Content-Type", "application/x-www-form-urlencoded");
 
-     return this.http.get(this.url+"login",{ headers: headers })
-      .map(res => res.json());
+     return this.http.get(this.url,{ headers: headers })
+      .map(res => res);
   }
 
   registerUser(user){

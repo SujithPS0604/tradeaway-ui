@@ -109,6 +109,9 @@ body {
 .padding-10{
 	margin-bottom: 10px;
 }
+.padding-top-30{
+  padding-top: 30px
+}
 
 .field-error{
     color: #ff0039;
