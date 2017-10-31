@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { Router, ActivatedRoute } from '@angular/router';
 import {UserService} from '../service/user.service';
 
@@ -13,10 +14,28 @@ import {UserService} from '../service/user.service';
 export class RegisterComponent implements OnInit{
    
   form = new FormGroup({
+    name: new FormControl(),
     email: new FormControl(),
+    userName: new FormControl(),
     password: new FormControl(),
-    confirmPassword: new FormControl()
+    confirmPassword: new FormControl(),
+    address: new FormControl(),
+    mobile: new FormControl(),
+    type: new FormControl(),
+    gender: new FormControl(),
+    dob: new FormControl(),
   });
+
+
+  public types = [
+    { value: 'SELLER', display: 'Seller' },
+    { value: 'BUYER', display: 'Buyer' }
+  ];
+
+  public genders = [
+    { value: 'MALE', display: 'Male' },
+    { value: 'FEMALE', display: 'Female' }
+  ];
 
   constructor(private userService: UserService,
    private router: Router) {
@@ -27,7 +46,18 @@ export class RegisterComponent implements OnInit{
     }
 
     register() {
-     this.userService.verifyUser(this.form.value)
+        this.userService.registerUser(this.form.value)
+        .subscribe(
+          user => {
+            console.log(user);
+
+            this.router.navigate(['signin']);
+
+          },
+          response => {
+            if (response.status == 404) {
+              this.router.navigate(['NotFound']);
+            }
+        });
     }
-}
 }

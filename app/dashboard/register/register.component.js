@@ -17,16 +17,40 @@ var RegisterComponent = (function () {
         this.userService = userService;
         this.router = router;
         this.form = new forms_1.FormGroup({
+            name: new forms_1.FormControl(),
             email: new forms_1.FormControl(),
+            userName: new forms_1.FormControl(),
             password: new forms_1.FormControl(),
-            confirmPassword: new forms_1.FormControl()
+            confirmPassword: new forms_1.FormControl(),
+            address: new forms_1.FormControl(),
+            mobile: new forms_1.FormControl(),
+            type: new forms_1.FormControl(),
+            gender: new forms_1.FormControl(),
+            dob: new forms_1.FormControl(),
         });
+        this.types = [
+            { value: 'SELLER', display: 'Seller' },
+            { value: 'BUYER', display: 'Buyer' }
+        ];
+        this.genders = [
+            { value: 'MALE', display: 'Male' },
+            { value: 'FEMALE', display: 'Female' }
+        ];
     }
     RegisterComponent.prototype.ngOnInit = function () {
         //init
     };
     RegisterComponent.prototype.register = function () {
-        this.userService.verifyUser(this.form.value);
+        var _this = this;
+        this.userService.registerUser(this.form.value)
+            .subscribe(function (user) {
+            console.log(user);
+            _this.router.navigate(['signin']);
+        }, function (response) {
+            if (response.status == 404) {
+                _this.router.navigate(['NotFound']);
+            }
+        });
     };
     return RegisterComponent;
 }());

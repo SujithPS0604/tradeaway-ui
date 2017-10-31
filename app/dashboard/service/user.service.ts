@@ -27,23 +27,11 @@ export class UserService {
   }
 
   verifyUser(user){
-     console.log('verifying user : ' )
+     console.log('verifying user : ' );
      console.info(user);
 
 
-     /* this.usersService.getUser(id)
-        .subscribe(
-          user => {
-
-           this.user = user;
-           this.jsInitOnLoad();
-
-          },
-          response => {
-            if (response.status == 404) {
-              this.router.navigate(['NotFound']);
-            }
-          }); */
+     return user.userName=='ss' ?  {'type':'register'} : null;
   }
 
   registerUser(user){

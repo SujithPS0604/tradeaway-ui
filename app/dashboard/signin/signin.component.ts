@@ -14,9 +14,11 @@ import {UserService} from '../service/user.service';
 export class SignInComponent implements OnInit{
 
   form = new FormGroup({
-    email: new FormControl(),
+    userName: new FormControl(),
     password: new FormControl()
   });
+
+  signinMessage="";
 
   constructor(private userService: UserService,
    private router: Router) {
@@ -27,6 +29,15 @@ export class SignInComponent implements OnInit{
     }
 
     signin() {
-     this.userService.verifyUser(this.form.value)
+		this.signinMessage="";
+
+       var res=this.userService.verifyUser(this.form.value);
+
+       if(res && res.type){
+       		this.router.navigate(['register']);
+       }else {
+          this.signinMessage="Wrong Credentials";
+       }
+              
     }
 }

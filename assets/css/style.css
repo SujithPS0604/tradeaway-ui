@@ -107,5 +107,9 @@ body {
 }
 
 .padding-10{
-	margin-bottom: 10px; */
+	margin-bottom: 10px;
+}
+
+.field-error{
+    color: #ff0039;
 }

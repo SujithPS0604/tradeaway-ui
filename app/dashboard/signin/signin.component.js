@@ -17,15 +17,23 @@ var SignInComponent = (function () {
         this.userService = userService;
         this.router = router;
         this.form = new forms_1.FormGroup({
-            email: new forms_1.FormControl(),
+            userName: new forms_1.FormControl(),
             password: new forms_1.FormControl()
         });
+        this.signinMessage = "";
     }
     SignInComponent.prototype.ngOnInit = function () {
         //init
     };
     SignInComponent.prototype.signin = function () {
-        this.userService.verifyUser(this.form.value);
+        this.signinMessage = "";
+        var res = this.userService.verifyUser(this.form.value);
+        if (res && res.type) {
+            this.router.navigate(['register']);
+        }
+        else {
+            this.signinMessage = "Wrong Credentials";
+        }
     };
     return SignInComponent;
 }());

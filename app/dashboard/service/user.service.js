@@ -31,19 +31,7 @@ var UserService = (function () {
     UserService.prototype.verifyUser = function (user) {
         console.log('verifying user : ');
         console.info(user);
-        /* this.usersService.getUser(id)
-           .subscribe(
-             user => {
-   
-              this.user = user;
-              this.jsInitOnLoad();
-   
-             },
-             response => {
-               if (response.status == 404) {
-                 this.router.navigate(['NotFound']);
-               }
-             }); */
+        return user.userName == 'ss' ? { 'type': 'register' } : null;
     };
     UserService.prototype.registerUser = function (user) {
         return this.http.post(this.url, JSON.stringify(user), options)
