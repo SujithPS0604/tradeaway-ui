@@ -11,6 +11,13 @@
 
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" formControlName="password"  id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <div *ngFor="let type of types">
+          <label for="{{type.value}}">
+            <input id="{{type.value}}" [value]='type.value' value="{{type.value}}" type="radio" name="type" formControlName="type"  required>
+            {{type.display}}
+          </label>
+        </div>
         
         <div ng-if="signinMessage" class="field-error">{{ signinMessage }}</div>
 

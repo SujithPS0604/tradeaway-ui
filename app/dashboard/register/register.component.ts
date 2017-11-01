@@ -28,6 +28,9 @@ export class RegisterComponent implements OnInit{
     experience: new FormControl(),
   });
 
+  type="BUYER";
+  gender="MALE";
+
 
   public types = [
     { value: 'SELLER', display: 'Seller' },
@@ -44,7 +47,7 @@ export class RegisterComponent implements OnInit{
   }
 
     ngOnInit(){
-       //init
+        
     }
 
     register() {

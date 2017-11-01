@@ -18,21 +18,30 @@ var SignInComponent = (function () {
         this.router = router;
         this.form = new forms_1.FormGroup({
             userName: new forms_1.FormControl(),
-            password: new forms_1.FormControl()
+            password: new forms_1.FormControl(),
+            type: new forms_1.FormControl()
         });
+        this.type = "BUYER";
         this.signinMessage = "";
+        this.types = [
+            { value: 'SELLER', display: 'Seller' },
+            { value: 'BUYER', display: 'Buyer' }
+        ];
     }
     SignInComponent.prototype.ngOnInit = function () {
         //init
     };
     SignInComponent.prototype.signin = function () {
         var _this = this;
+        console.log(this.form.value);
+        var userType = this.form.value.type;
         this.userService.verifyUser(this.form.value)
             .subscribe(function (data) {
             console.log(data);
-            _this.router.navigate(['seller-home']);
+            _this.router.navigate([userType.toLowerCase() + '-home'], { queryParams: { id: data.content[0].id, type: userType } });
         }, function (error) {
             _this.signinMessage = "Wrong credentials!!! ";
+            console.error(error);
         });
     };
     return SignInComponent;

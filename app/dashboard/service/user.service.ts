@@ -21,8 +21,8 @@ export class UserService {
       .map(res => res.json());
   }
 
-  getUser(id){
-    return this.http.get(this.getUserUrl(id))
+  getUser(type,id){
+    return this.http.get(this.url+ type.toLowerCase() + "/" +id)
       .map(res => res.json());
   }
 
@@ -31,16 +31,14 @@ export class UserService {
       headers.append("Authorization", "Basic " + btoa(user.userName + ":" + user.password)); 
       headers.append("Content-Type", "application/x-www-form-urlencoded");
 
-     return this.http.get(this.url,{ headers: headers })
-      .map(res => res);
+     return this.http.get(this.url + user.type.toLowerCase()+"/search/findByUserName?userName="+user.userName,{ headers: headers })
+      .map(res => res.json());
   }
 
   registerUser(user){
     return this.http.post(this.url+user.type.toLowerCase(), JSON.stringify(user),options)
       .map(res => res.json());
   }
-
-
 
   updateUser(user){
     return this.http.put(this.getUserUrl(user.id), JSON.stringify(user),options)
@@ -50,6 +48,14 @@ export class UserService {
   deleteUser(id){
     return this.http.delete(this.getUserUrl(id))
       .map(res => res.json());
+  }
+
+  logout(userName,password){
+     let headers = new Headers();
+      headers.append("Authorization", "Basic " + btoa(userName + ":" + password)); 
+      headers.append("Content-Type", "application/x-www-form-urlencoded");
+
+      return this.http.post(this.url + "logout" ,{} , {headers : headers});
   }
 
   private getUserUrl(id){

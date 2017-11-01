@@ -3,6 +3,7 @@ var home_component_1 = require("./home/home.component");
 var register_component_1 = require("./register/register.component");
 var signin_component_1 = require("./signin/signin.component");
 var seller_home_component_1 = require("./seller/seller-home.component");
+var buyer_home_component_1 = require("./buyer/buyer-home.component");
 var add_component_1 = require("./seller/items/add/add.component");
 var view_component_1 = require("./seller/items/view/view.component");
 var orders_component_1 = require("./seller/items/orders/orders.component");
@@ -11,6 +12,7 @@ exports.MODULE_ROUTES = [
     { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'signin', component: signin_component_1.SignInComponent },
     { path: 'seller-home', component: seller_home_component_1.SellerHomeComponent },
+    { path: 'buyer-home', component: buyer_home_component_1.BuyerHomeComponent },
     { path: 'add-item', component: add_component_1.AddItemComponent },
     { path: 'view-item', component: view_component_1.ViewItemComponent },
     { path: 'orders', component: orders_component_1.OrdersComponent },
@@ -21,6 +23,7 @@ exports.MODULE_COMPONENTS = [
     signin_component_1.SignInComponent,
     register_component_1.RegisterComponent,
     seller_home_component_1.SellerHomeComponent,
+    buyer_home_component_1.BuyerHomeComponent,
     add_component_1.AddItemComponent,
     view_component_1.ViewItemComponent,
     orders_component_1.OrdersComponent

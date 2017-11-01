@@ -11,14 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var user_service_1 = require("../service/user.service");
-var SellerHomeComponent = (function () {
-    function SellerHomeComponent(userService, router, route) {
+var BuyerHomeComponent = (function () {
+    function BuyerHomeComponent(userService, router, route) {
         this.userService = userService;
         this.router = router;
         this.route = route;
         this.user = {};
     }
-    SellerHomeComponent.prototype.logout = function () {
+    BuyerHomeComponent.prototype.logout = function () {
         var _this = this;
         this.userService.logout(this.user.userName, this.user.password)
             .subscribe(function (data) {
@@ -28,7 +28,7 @@ var SellerHomeComponent = (function () {
             _this.router.navigate(['signin']);
         });
     };
-    SellerHomeComponent.prototype.ngOnInit = function () {
+    BuyerHomeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.queryParams.subscribe(function (params) {
             var id = params['id'];
@@ -45,17 +45,17 @@ var SellerHomeComponent = (function () {
             });
         });
     };
-    return SellerHomeComponent;
+    return BuyerHomeComponent;
 }());
-SellerHomeComponent = __decorate([
+BuyerHomeComponent = __decorate([
     core_1.Component({
-        selector: 'seller-home-cmp',
+        selector: 'buyer-home-cmp',
         moduleId: module.id,
-        templateUrl: 'seller-home.component.html'
+        templateUrl: 'buyer-home.component.html'
     }),
     __metadata("design:paramtypes", [user_service_1.UserService,
         router_1.Router,
         router_1.ActivatedRoute])
-], SellerHomeComponent);
-exports.SellerHomeComponent = SellerHomeComponent;
-//# sourceMappingURL=seller-home.component.js.map
+], BuyerHomeComponent);
+exports.BuyerHomeComponent = BuyerHomeComponent;
+//# sourceMappingURL=buyer-home.component.js.map

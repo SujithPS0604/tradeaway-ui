@@ -6,12 +6,12 @@ import {UserService} from '../service/user.service';
 
 
 @Component({
-    selector: 'seller-home-cmp',
+    selector: 'buyer-home-cmp',
     moduleId: module.id,
-    templateUrl: 'seller-home.component.html'
+    templateUrl: 'buyer-home.component.html'
 })
 
-export class SellerHomeComponent implements OnInit{
+export class BuyerHomeComponent implements OnInit{
     user = {};
 
 
@@ -25,11 +25,11 @@ export class SellerHomeComponent implements OnInit{
       this.userService.logout(this.user.userName,this.user.password)
       	.subscribe(
       	    data => {
-				this.router.navigate(['signin']);
+				        this.router.navigate(['signin']);
       	    },
       	    error=> {
       	        console.error( error ) ;
-  				this.router.navigate(['signin']);
+  				      this.router.navigate(['signin']);
       	    }
       	);
 

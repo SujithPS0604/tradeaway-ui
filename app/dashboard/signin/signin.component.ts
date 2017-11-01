@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import {User} from '../user/user';
 import {UserService} from '../service/user.service';
 
 @Component({
@@ -15,10 +14,19 @@ export class SignInComponent implements OnInit{
 
   form = new FormGroup({
     userName: new FormControl(),
-    password: new FormControl()
+    password: new FormControl(),
+    type: new FormControl()
   });
 
+  type="BUYER";
+
   signinMessage="";
+
+   public types = [
+    { value: 'SELLER', display: 'Seller' },
+    { value: 'BUYER', display: 'Buyer' }
+  ];
+
 
   constructor(private userService: UserService,
    private router: Router) {
@@ -29,16 +37,20 @@ export class SignInComponent implements OnInit{
     }
 
     signin() {
+    console.log(this.form.value)
+       let userType=this.form.value.type;
 		   this.userService.verifyUser(this.form.value)
         .subscribe(
           data => {
             console.log(data);
 
-            this.router.navigate(['seller-home']);
+            this.router.navigate([userType.toLowerCase()+'-home'], { queryParams: { id: data.content[0].id , type: userType }});
 
           },
           error => {
              this.signinMessage="Wrong credentials!!! ";
+
+             console.error(error);
         });
               
     }

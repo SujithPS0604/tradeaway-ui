@@ -30,6 +30,8 @@ var RegisterComponent = (function () {
             pan: new forms_1.FormControl(),
             experience: new forms_1.FormControl(),
         });
+        this.type = "BUYER";
+        this.gender = "MALE";
         this.types = [
             { value: 'SELLER', display: 'Seller' },
             { value: 'BUYER', display: 'Buyer' }
@@ -40,7 +42,6 @@ var RegisterComponent = (function () {
         ];
     }
     RegisterComponent.prototype.ngOnInit = function () {
-        //init
     };
     RegisterComponent.prototype.register = function () {
         var _this = this;

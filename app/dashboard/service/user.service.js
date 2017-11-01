@@ -24,16 +24,16 @@ var UserService = (function () {
         return this.http.get(this.url)
             .map(function (res) { return res.json(); });
     };
-    UserService.prototype.getUser = function (id) {
-        return this.http.get(this.getUserUrl(id))
+    UserService.prototype.getUser = function (type, id) {
+        return this.http.get(this.url + type.toLowerCase() + "/" + id)
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.verifyUser = function (user) {
         var headers = new http_1.Headers();
         headers.append("Authorization", "Basic " + btoa(user.userName + ":" + user.password));
         headers.append("Content-Type", "application/x-www-form-urlencoded");
-        return this.http.get(this.url, { headers: headers })
-            .map(function (res) { return res; });
+        return this.http.get(this.url + user.type.toLowerCase() + "/search/findByUserName?userName=" + user.userName, { headers: headers })
+            .map(function (res) { return res.json(); });
     };
     UserService.prototype.registerUser = function (user) {
         return this.http.post(this.url + user.type.toLowerCase(), JSON.stringify(user), options)
@@ -46,6 +46,12 @@ var UserService = (function () {
     UserService.prototype.deleteUser = function (id) {
         return this.http.delete(this.getUserUrl(id))
             .map(function (res) { return res.json(); });
+    };
+    UserService.prototype.logout = function (userName, password) {
+        var headers = new http_1.Headers();
+        headers.append("Authorization", "Basic " + btoa(userName + ":" + password));
+        headers.append("Content-Type", "application/x-www-form-urlencoded");
+        return this.http.post(this.url + "logout", {}, { headers: headers });
     };
     UserService.prototype.getUserUrl = function (id) {
         return this.url + "/" + id;

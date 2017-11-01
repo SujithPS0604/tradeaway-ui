@@ -29,7 +29,7 @@
 
         <label for="type" class="sr-only">Type</label>
         <select name="type" id="type" class="form-control" formControlName="type" [(ngModel)]="type">
-             <option *ngFor="let type of types" [value]="type.value">  
+             <option *ngFor="let type of types" [value]="type.value" >  
                 {{type.display}}
             </option>
         </select>
@@ -37,7 +37,7 @@
          <div *ngIf="type=='BUYER'" >
              
                 <label for="gender" class="sr-only">Gender</label>
-                <select name="gender" id="gender" class="form-control" formControlName="gender">
+                <select name="gender" id="gender" class="form-control" formControlName="gender" [(ngModel)]="gender">
                     <option *ngFor="let gender of genders" [value]="gender.value">  
                         {{gender.display}}
                     </option>
