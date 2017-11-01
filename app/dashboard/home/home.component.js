@@ -9,9 +9,6 @@ var core_1 = require("@angular/core");
 var HomeComponent = (function () {
     function HomeComponent() {
     }
-    HomeComponent.prototype.ngOnInit = function () {
-        //init
-    };
     return HomeComponent;
 }());
 HomeComponent = __decorate([

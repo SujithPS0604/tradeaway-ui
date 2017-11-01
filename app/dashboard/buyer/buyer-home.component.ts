@@ -12,33 +12,17 @@ import {UserService} from '../service/user.service';
 })
 
 export class BuyerHomeComponent implements OnInit{
-    user = {};
+    user = {'userName' : '', 'password' : ''};
 
 
 	constructor(private userService : UserService ,
    		private router: Router,
    		private route: ActivatedRoute) {
   	}
-
-  	logout(){
-
-      this.userService.logout(this.user.userName,this.user.password)
-      	.subscribe(
-      	    data => {
-				        this.router.navigate(['signin']);
-      	    },
-      	    error=> {
-      	        console.error( error ) ;
-  				      this.router.navigate(['signin']);
-      	    }
-      	);
-
-  	}
-
-
+ 
     ngOnInit(){
 
-      this.route.queryParams.subscribe( (params : Params )=> {
+      this.route.queryParams.subscribe( (params  )=> {
 	      var id = params['id'];
 	      var type = params['type'];
 
@@ -59,5 +43,22 @@ export class BuyerHomeComponent implements OnInit{
 	          });
 	    });
        
+    }
+
+
+
+    logout(){
+
+      this.userService.logout(this.user.userName,this.user.password)
+        .subscribe(
+            data => {
+                this.router.navigate(['signin']);
+            },
+            error=> {
+                console.error( error ) ;
+                this.router.navigate(['signin']);
+            }
+        );
+
     }
 }

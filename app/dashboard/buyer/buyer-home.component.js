@@ -16,18 +16,8 @@ var BuyerHomeComponent = (function () {
         this.userService = userService;
         this.router = router;
         this.route = route;
-        this.user = {};
+        this.user = { 'userName': '', 'password': '' };
     }
-    BuyerHomeComponent.prototype.logout = function () {
-        var _this = this;
-        this.userService.logout(this.user.userName, this.user.password)
-            .subscribe(function (data) {
-            _this.router.navigate(['signin']);
-        }, function (error) {
-            console.error(error);
-            _this.router.navigate(['signin']);
-        });
-    };
     BuyerHomeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.queryParams.subscribe(function (params) {
@@ -43,6 +33,16 @@ var BuyerHomeComponent = (function () {
                 //invalid user
                 _this.router.navigate(['signin']);
             });
+        });
+    };
+    BuyerHomeComponent.prototype.logout = function () {
+        var _this = this;
+        this.userService.logout(this.user.userName, this.user.password)
+            .subscribe(function (data) {
+            _this.router.navigate(['signin']);
+        }, function (error) {
+            console.error(error);
+            _this.router.navigate(['signin']);
         });
     };
     return BuyerHomeComponent;

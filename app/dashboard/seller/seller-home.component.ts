@@ -12,7 +12,7 @@ import {UserService} from '../service/user.service';
 })
 
 export class SellerHomeComponent implements OnInit{
-    user = {};
+    user = {'userName' : '', 'password' : ''};
 
 
 	constructor(private userService : UserService ,
@@ -38,7 +38,7 @@ export class SellerHomeComponent implements OnInit{
 
     ngOnInit(){
 
-      this.route.queryParams.subscribe( (params : Params )=> {
+      this.route.queryParams.subscribe( (params )=> {
 	      var id = params['id'];
 	      var type = params['type'];
 

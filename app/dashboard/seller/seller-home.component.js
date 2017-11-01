@@ -16,7 +16,7 @@ var SellerHomeComponent = (function () {
         this.userService = userService;
         this.router = router;
         this.route = route;
-        this.user = {};
+        this.user = { 'userName': '', 'password': '' };
     }
     SellerHomeComponent.prototype.logout = function () {
         var _this = this;
