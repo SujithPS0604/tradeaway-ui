@@ -19,4 +19,5 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     declarations: [ AppComponent, DashboardComponent ], 
     bootstrap:    [ AppComponent ]
 })
+
 export class AppModule { }

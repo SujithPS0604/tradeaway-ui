@@ -32,17 +32,12 @@ export class SignInComponent implements OnInit{
    private router: Router) {
   }
 
-    ngOnInit(){
-       //init
-    }
-
-    signin() {
-    console.log(this.form.value)
+  signin() {
+    
        let userType=this.form.value.type;
 		   this.userService.verifyUser(this.form.value)
         .subscribe(
-          data => {
-            console.log(data);
+          data => { 
 
             this.router.navigate([userType.toLowerCase()+'-home'], { queryParams: { id: data.content[0].id , type: userType }});
 
@@ -53,5 +48,5 @@ export class SignInComponent implements OnInit{
              console.error(error);
         });
               
-    }
+  }
 }

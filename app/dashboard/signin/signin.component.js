@@ -28,16 +28,11 @@ var SignInComponent = (function () {
             { value: 'BUYER', display: 'Buyer' }
         ];
     }
-    SignInComponent.prototype.ngOnInit = function () {
-        //init
-    };
     SignInComponent.prototype.signin = function () {
         var _this = this;
-        console.log(this.form.value);
         var userType = this.form.value.type;
         this.userService.verifyUser(this.form.value)
             .subscribe(function (data) {
-            console.log(data);
             _this.router.navigate([userType.toLowerCase() + '-home'], { queryParams: { id: data.content[0].id, type: userType } });
         }, function (error) {
             _this.signinMessage = "Wrong credentials!!! ";

@@ -33,7 +33,7 @@ export class BuyerHomeComponent implements OnInit{
 	      this.userService.getUser(type,id)
 	        .subscribe(
 	          user => {
-	           this.user = user;
+	             this.user = user;
 
 	          },
 	          error => {

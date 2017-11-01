@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
 let headers = new Headers({ 'Content-Type': 'application/json' });
-let options = new RequestOptions({ headers: headers });
+let options = new RequestOptions({ headers: headers , withCredentials: true });
 
 @Injectable()
 export class UserService {
@@ -22,7 +22,7 @@ export class UserService {
   }
 
   getUser(type,id){
-    return this.http.get(this.url+ type.toLowerCase() + "/" +id)
+    return this.http.get(this.url+ type.toLowerCase() + "/" +id,options)
       .map(res => res.json());
   }
 
@@ -31,7 +31,7 @@ export class UserService {
       headers.append("Authorization", "Basic " + btoa(user.userName + ":" + user.password)); 
       headers.append("Content-Type", "application/x-www-form-urlencoded");
 
-     return this.http.get(this.url + user.type.toLowerCase()+"/search/findByUserName?userName="+user.userName,{ headers: headers })
+     return this.http.get(this.url + user.type.toLowerCase()+"/search/findByUserName?userName="+user.userName,{ headers: headers ,withCredentials: true })
       .map(res => res.json());
   }
 
@@ -46,7 +46,7 @@ export class UserService {
   }
 
   deleteUser(id){
-    return this.http.delete(this.getUserUrl(id))
+    return this.http.delete(this.getUserUrl(id),options)
       .map(res => res.json());
   }
 
@@ -55,7 +55,7 @@ export class UserService {
       headers.append("Authorization", "Basic " + btoa(userName + ":" + password)); 
       headers.append("Content-Type", "application/x-www-form-urlencoded");
 
-      return this.http.post(this.url + "logout" ,{} , {headers : headers});
+      return this.http.post(this.url + "logout" ,{} , {headers : headers , withCredentials: true});
   }
 
   private getUserUrl(id){

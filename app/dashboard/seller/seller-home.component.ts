@@ -25,11 +25,11 @@ export class SellerHomeComponent implements OnInit{
       this.userService.logout(this.user.userName,this.user.password)
       	.subscribe(
       	    data => {
-				this.router.navigate(['signin']);
+				        this.router.navigate(['signin']);
       	    },
       	    error=> {
       	        console.error( error ) ;
-  				this.router.navigate(['signin']);
+  				      this.router.navigate(['signin']);
       	    }
       	);
 
@@ -37,7 +37,6 @@ export class SellerHomeComponent implements OnInit{
 
 
     ngOnInit(){
-
       this.route.queryParams.subscribe( (params )=> {
 	      var id = params['id'];
 	      var type = params['type'];
@@ -49,13 +48,11 @@ export class SellerHomeComponent implements OnInit{
 	      this.userService.getUser(type,id)
 	        .subscribe(
 	          user => {
-	           this.user = user;
-
+	             this.user = user;
 	          },
 	          error => {
 	              //invalid user
 	              this.router.navigate(['signin']);
-	             
 	          });
 	    });
        

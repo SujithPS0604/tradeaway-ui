@@ -14,7 +14,7 @@ require("rxjs/add/operator/map");
 require("rxjs/add/operator/do");
 require("rxjs/add/operator/catch");
 var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-var options = new http_1.RequestOptions({ headers: headers });
+var options = new http_1.RequestOptions({ headers: headers, withCredentials: true });
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
@@ -25,14 +25,14 @@ var UserService = (function () {
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.getUser = function (type, id) {
-        return this.http.get(this.url + type.toLowerCase() + "/" + id)
+        return this.http.get(this.url + type.toLowerCase() + "/" + id, options)
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.verifyUser = function (user) {
         var headers = new http_1.Headers();
         headers.append("Authorization", "Basic " + btoa(user.userName + ":" + user.password));
         headers.append("Content-Type", "application/x-www-form-urlencoded");
-        return this.http.get(this.url + user.type.toLowerCase() + "/search/findByUserName?userName=" + user.userName, { headers: headers })
+        return this.http.get(this.url + user.type.toLowerCase() + "/search/findByUserName?userName=" + user.userName, { headers: headers, withCredentials: true })
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.registerUser = function (user) {
@@ -44,14 +44,14 @@ var UserService = (function () {
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.deleteUser = function (id) {
-        return this.http.delete(this.getUserUrl(id))
+        return this.http.delete(this.getUserUrl(id), options)
             .map(function (res) { return res.json(); });
     };
     UserService.prototype.logout = function (userName, password) {
         var headers = new http_1.Headers();
         headers.append("Authorization", "Basic " + btoa(userName + ":" + password));
         headers.append("Content-Type", "application/x-www-form-urlencoded");
-        return this.http.post(this.url + "logout", {}, { headers: headers });
+        return this.http.post(this.url + "logout", {}, { headers: headers, withCredentials: true });
     };
     UserService.prototype.getUserUrl = function (id) {
         return this.url + "/" + id;
