@@ -10,7 +10,7 @@ import {UserService} from '../service/user.service';
     templateUrl: 'signin.component.html'
 })
 
-export class SignInComponent implements OnInit{
+export class SignInComponent{
 
   form = new FormGroup({
     userName: new FormControl(),
