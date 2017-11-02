@@ -116,3 +116,15 @@ body {
 .field-error{
     color: #ff0039;
 }
+.field-warning{
+    color: rgb(232, 148, 99);
+}
+
+.item-img{
+    max-width: 200px;
+    max-height: 200px;
+}
+.item-img-small{
+    max-width: 100px;
+    max-height: 100px;
+}

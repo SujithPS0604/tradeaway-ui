@@ -17,6 +17,7 @@ var SellerHomeComponent = (function () {
         this.router = router;
         this.route = route;
         this.user = { 'userName': '', 'password': '' };
+        this.id = "";
     }
     SellerHomeComponent.prototype.logout = function () {
         var _this = this;
@@ -33,9 +34,11 @@ var SellerHomeComponent = (function () {
         this.route.queryParams.subscribe(function (params) {
             var id = params['id'];
             var type = params['type'];
-            if (!id) {
+            if (!id || !type) {
+                _this.router.navigate(['signin'], { queryParams: { 'error-message': 'invalid user' } });
                 return;
             }
+            _this.id = id;
             _this.userService.getUser(type, id)
                 .subscribe(function (user) {
                 _this.user = user;

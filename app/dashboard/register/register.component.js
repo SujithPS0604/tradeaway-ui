@@ -50,7 +50,9 @@ var RegisterComponent = (function () {
             console.log(user);
             _this.router.navigate(['signin']);
         }, function (error) {
-            _this.router.navigate(['notfound']);
+            console.error(error);
+            // this.router.navigate(['notfound']);
+            _this.router.navigate(['signin']);
         });
     };
     return RegisterComponent;

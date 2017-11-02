@@ -60,7 +60,9 @@ export class RegisterComponent implements OnInit{
 
           },
           error => {
-              this.router.navigate(['notfound']);
+            console.error(error)
+             // this.router.navigate(['notfound']);
+              this.router.navigate(['signin']);
         });
     }
 }

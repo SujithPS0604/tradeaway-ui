@@ -10,7 +10,7 @@ import {UserService} from '../service/user.service';
     templateUrl: 'signin.component.html'
 })
 
-export class SignInComponent{
+export class SignInComponent implements OnInit{
 
   form = new FormGroup({
     userName: new FormControl(),
@@ -27,9 +27,21 @@ export class SignInComponent{
     { value: 'BUYER', display: 'Buyer' }
   ];
 
+  ngOnInit(){
+     this.route.queryParams.subscribe( (params )=> {
+        var id = params['error-message'];
+
+        if(!id){
+          return ;
+        }
+
+        this.signinMessage="Wrong user " ;
+      });
+  }
+
 
   constructor(private userService: UserService,
-   private router: Router) {
+   private router: Router,private route: ActivatedRoute) {
   }
 
   signin() {

@@ -1,5 +1,41 @@
 <div class="container">
 
-	<h2>Orders</h2>
+	<h2>View Orders</h2>
+
+     <div  class=""><h4><a href="seller-home?id={{id}}&type=SELLER">Home</a></h4></div>
+     
+
+	<table class="table table-striped" >
+    <thead>
+    <tr>
+        <th style="width: 20%">
+            <span by="name">Name</span>
+        </th>
+        <th style="width: 10%">
+            <span by="email">Category</span>
+        </th>
+        <th style="width: 50%">
+            <span by="age">Short Description</span>
+        </th>
+        <th style="width: 20%">
+            <span by="city">Image</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items">
+        <td>{{item.name}}</td>
+        <td>{{item.category}}</td>
+        <td >{{item.shortDesc}}</td>
+        <td><img src="{{item.imgUrl}}" class="item-img"></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">
+        </td>
+    </tr>
+    </tfoot>
+</table>
 
 </div>

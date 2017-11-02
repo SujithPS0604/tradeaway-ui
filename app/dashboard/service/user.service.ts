@@ -37,7 +37,7 @@ export class UserService {
 
   registerUser(user){
     return this.http.post(this.url+user.type.toLowerCase(), JSON.stringify(user),options)
-      .map(res => res.json());
+      .map(res => {console.info(res); return res.json()});
   }
 
   updateUser(user){
@@ -55,7 +55,7 @@ export class UserService {
       headers.append("Authorization", "Basic " + btoa(userName + ":" + password)); 
       headers.append("Content-Type", "application/x-www-form-urlencoded");
 
-      return this.http.post(this.url + "logout" ,{} , {headers : headers , withCredentials: true});
+      return this.http.post(this.url + "logout" ,{} , {headers : headers , withCredentials : true});
   }
 
   private getUserUrl(id){

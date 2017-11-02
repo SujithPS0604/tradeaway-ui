@@ -13,9 +13,10 @@ var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var user_service_1 = require("../service/user.service");
 var SignInComponent = (function () {
-    function SignInComponent(userService, router) {
+    function SignInComponent(userService, router, route) {
         this.userService = userService;
         this.router = router;
+        this.route = route;
         this.form = new forms_1.FormGroup({
             userName: new forms_1.FormControl(),
             password: new forms_1.FormControl(),
@@ -28,6 +29,16 @@ var SignInComponent = (function () {
             { value: 'BUYER', display: 'Buyer' }
         ];
     }
+    SignInComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.queryParams.subscribe(function (params) {
+            var id = params['error-message'];
+            if (!id) {
+                return;
+            }
+            _this.signinMessage = "Wrong user ";
+        });
+    };
     SignInComponent.prototype.signin = function () {
         var _this = this;
         var userType = this.form.value.type;
@@ -48,7 +59,7 @@ SignInComponent = __decorate([
         templateUrl: 'signin.component.html'
     }),
     __metadata("design:paramtypes", [user_service_1.UserService,
-        router_1.Router])
+        router_1.Router, router_1.ActivatedRoute])
 ], SignInComponent);
 exports.SignInComponent = SignInComponent;
 //# sourceMappingURL=signin.component.js.map

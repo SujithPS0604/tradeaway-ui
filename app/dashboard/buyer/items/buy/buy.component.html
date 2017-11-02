@@ -1,10 +1,11 @@
 <div class="container">
 
-	<h2>View Items</h2>
+    <h2>Buy Items</h2>
 
-    <div  class=""><h4><a href="seller-home?id={{id}}&type=SELLER">Home</a></h4></div>
-    
-	<table class="table table-striped" >
+    <div  class=""><h4><a href="buyer-home">Home</a></h4></div>
+    <div ng-if="message" class="field-warning">{{ message }}</div>
+
+    <table class="table table-striped" >
     <thead>
     <tr>
         <th style="width: 20%">
@@ -13,11 +14,14 @@
         <th style="width: 10%">
             <span by="email">Category</span>
         </th>
-        <th style="width: 50%">
+        <th style="width: 30%">
             <span by="age">Short Description</span>
         </th>
-        <th style="width: 20%">
+        <th style="width: 10%">
             <span by="city">Image</span>
+        </th>
+        <th style="width: 20%">
+            <span by="">Buy</span>
         </th>
     </tr>
     </thead>
@@ -26,7 +30,8 @@
         <td>{{item.name}}</td>
         <td>{{item.category}}</td>
         <td >{{item.shortDesc}}</td>
-        <td><img src="{{item.imgUrl}}" class="item-img"></td>
+        <td><img src="{{item.imgUrl}}" class="item-img-small"></td>
+        <td><button class="btn btn-primary" (click)="buy(item.name)">BUY</button></td>
     </tr>
     </tbody>
     <tfoot>

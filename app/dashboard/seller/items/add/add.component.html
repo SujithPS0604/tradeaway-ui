@@ -1,29 +1,32 @@
 <div class="container">
 
 
-      <form class="form-signin" [formGroup]="form" id="registerForm">
+      <form class="form-signin" [formGroup]="form" (ngSubmit)="addItem()" id="addItemForm">
        
         <h2 class="form-signin-heading">Add New Item</h2>
 
-        <label for="item" class="sr-only">Item</label>
-        <select name="item" id="item" class="form-control" formControlName="item" [(ngModel)]="item" >
-             <option *ngFor="let item of items" [value]="item.name">  
+        <div  class=""><h4><a href="seller-home?id={{id}}&type=SELLER">Home</a></h4></div>
+
+
+        <label for="id" class="">Item</label>
+        <select name="id" id="id" class="form-control" formControlName="id" [(ngModel)]="itemId" (change)="changeItem(itemId)">
+             <option *ngFor="let item of items" [value]="item.id">  
                 {{item.name}}
             </option>
         </select>
 
-        <label for="category" class="sr-only">Category</label>
-          <select name="category" id="category" class="form-control" formControlName="category" [(ngModel)]="category" >
-             <option *ngFor="let category of categories" [value]="category.name">  
-                {{category.name}}
+        <label for="category" class="">Category</label>
+          <select name="category" id="category" class="form-control" formControlName="category" [(ngModel)]="category" disabled>
+             <option *ngFor="let category of categories" [value]="category">  
+                {{category}}
             </option>
         </select>
 
-        <label for="image" class="sr-only padding-10">Image</label>
-        <input type="file"  formControlName="image" id="image" class="form-control" placeholder="Select image">
+        <label for="imgUrl" class="sr-only padding-10">Image</label>
+        <input type="text"  formControlName="imgUrl" id="imgUrl" class="form-control" placeholder="Add image URL" value="{{item.imgUrl}}">
 
-        <label for="description" class="sr-only padding-10">Short Description</label>
-        <input type="textarea"  formControlName="description" id="description" class="form-control" placeholder="Enter Description" required rows="4">
+        <label for="shortDesc" class="sr-only padding-10">Short Description</label>
+        <input type="textarea"  formControlName="shortDesc" id="shortDesc" name="shortDesc" class="form-control" placeholder="Enter Description" required rows="4" value="{{item.shortDesc}}">
         
         <label for="qauntity" class="sr-only padding-10">Quantity</label>
         <input type="text" formControlName="quantity" id="quantity" class="form-control" placeholder="Quantity" required pattern="[0-9]*">

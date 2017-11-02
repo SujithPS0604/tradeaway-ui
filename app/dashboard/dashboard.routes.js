@@ -5,6 +5,7 @@ var signin_component_1 = require("./signin/signin.component");
 var seller_home_component_1 = require("./seller/seller-home.component");
 var buyer_home_component_1 = require("./buyer/buyer-home.component");
 var add_component_1 = require("./seller/items/add/add.component");
+var buy_component_1 = require("./buyer/items/buy/buy.component");
 var view_component_1 = require("./seller/items/view/view.component");
 var orders_component_1 = require("./seller/items/orders/orders.component");
 exports.MODULE_ROUTES = [
@@ -16,6 +17,7 @@ exports.MODULE_ROUTES = [
     { path: 'add-item', component: add_component_1.AddItemComponent },
     { path: 'view-item', component: view_component_1.ViewItemComponent },
     { path: 'orders', component: orders_component_1.OrdersComponent },
+    { path: 'buy-item', component: buy_component_1.BuyItemComponent },
     { path: '', redirectTo: 'signin', pathMatch: 'full' }
 ];
 exports.MODULE_COMPONENTS = [
@@ -26,6 +28,7 @@ exports.MODULE_COMPONENTS = [
     buyer_home_component_1.BuyerHomeComponent,
     add_component_1.AddItemComponent,
     view_component_1.ViewItemComponent,
-    orders_component_1.OrdersComponent
+    orders_component_1.OrdersComponent,
+    buy_component_1.BuyItemComponent
 ];
 //# sourceMappingURL=dashboard.routes.js.map

@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var seller_service_1 = require("../../../service/seller.service");
-var ViewItemComponent = (function () {
-    function ViewItemComponent(sellerService, router, route) {
+var BuyItemComponent = (function () {
+    function BuyItemComponent(sellerService, router, route) {
         this.sellerService = sellerService;
         this.router = router;
         this.route = route;
@@ -20,13 +20,14 @@ var ViewItemComponent = (function () {
             { name: 'ITEM1', category: 'CATEGORY1', id: '1', imgUrl: 'https://kbob.github.io/images/sample-3.jpg', shortDesc: 'This item is a very good one having two legs and one eye' },
             { name: 'ITEM2', category: 'CATEGORY2', id: '2', imgUrl: 'https://kbob.github.io/images/sample-3.jpg', shortDesc: 'This item is a very good one having two legs and two eyes' }
         ];
-        this.id = "";
+        this.buyerId = 0;
+        this.message = "";
     }
-    ViewItemComponent.prototype.ngOnInit = function () {
+    BuyItemComponent.prototype.ngOnInit = function () {
         var _this = this;
         //init
         this.route.queryParams.subscribe(function (params) {
-            _this.id = params['id'];
+            _this.buyerId = params['id'];
         });
         this.sellerService.getItems()
             .subscribe(function (items) {
@@ -35,17 +36,20 @@ var ViewItemComponent = (function () {
             console.error(error);
         });
     };
-    return ViewItemComponent;
+    BuyItemComponent.prototype.buy = function (name) {
+        this.message = "Bought Item : " + name;
+    };
+    return BuyItemComponent;
 }());
-ViewItemComponent = __decorate([
+BuyItemComponent = __decorate([
     core_1.Component({
-        selector: 'view-item-cmp',
+        selector: 'buy-item-cmp',
         moduleId: module.id,
-        templateUrl: 'view.component.html'
+        templateUrl: 'buy.component.html'
     }),
     __metadata("design:paramtypes", [seller_service_1.SellerService,
         router_1.Router,
         router_1.ActivatedRoute])
-], ViewItemComponent);
-exports.ViewItemComponent = ViewItemComponent;
-//# sourceMappingURL=view.component.js.map
+], BuyItemComponent);
+exports.BuyItemComponent = BuyItemComponent;
+//# sourceMappingURL=buy.component.js.map

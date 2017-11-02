@@ -37,7 +37,7 @@ var UserService = (function () {
     };
     UserService.prototype.registerUser = function (user) {
         return this.http.post(this.url + user.type.toLowerCase(), JSON.stringify(user), options)
-            .map(function (res) { return res.json(); });
+            .map(function (res) { console.info(res); return res.json(); });
     };
     UserService.prototype.updateUser = function (user) {
         return this.http.put(this.getUserUrl(user.id), JSON.stringify(user), options)

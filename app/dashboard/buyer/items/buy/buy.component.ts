@@ -5,19 +5,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {SellerService} from '../../../service/seller.service';
 
 @Component({
-    selector: 'view-item-cmp',
+    selector: 'buy-item-cmp',
     moduleId: module.id,
-    templateUrl: 'view.component.html'
+    templateUrl: 'buy.component.html'
 })
 
-export class ViewItemComponent implements OnInit{
+export class BuyItemComponent implements OnInit{
 
-	public items = [
-	    { name: 'ITEM1', category: 'CATEGORY1' , id : '1' , imgUrl : 'https://kbob.github.io/images/sample-3.jpg' , shortDesc : 'This item is a very good one having two legs and one eye' },
-	    { name: 'ITEM2', category: 'CATEGORY2' , id : '2' , imgUrl : 'https://kbob.github.io/images/sample-3.jpg' , shortDesc : 'This item is a very good one having two legs and two eyes' }
-	];
+  public items = [
+      { name: 'ITEM1', category: 'CATEGORY1' , id : '1' , imgUrl : 'https://kbob.github.io/images/sample-3.jpg' , shortDesc : 'This item is a very good one having two legs and one eye' },
+      { name: 'ITEM2', category: 'CATEGORY2' , id : '2' , imgUrl : 'https://kbob.github.io/images/sample-3.jpg' , shortDesc : 'This item is a very good one having two legs and two eyes' }
+  ];
 
-    id="";
+   buyerId=0;
+
+   message="";
 
     constructor(private sellerService : SellerService ,
            private router: Router,
@@ -27,7 +29,7 @@ export class ViewItemComponent implements OnInit{
     ngOnInit(){
        //init
        this.route.queryParams.subscribe( (params )=> {
-          this.id = params['id'];
+          this.buyerId = params['id'];
       });
 
       this.sellerService.getItems()
@@ -39,6 +41,10 @@ export class ViewItemComponent implements OnInit{
                          console.error(error);
                      }
       );
+    }
+
+    buy(name){
+      this.message="Bought Item : " + name;
     }
 
 
