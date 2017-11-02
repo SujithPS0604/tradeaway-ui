@@ -14,6 +14,7 @@ var OrdersComponent = (function () {
     function OrdersComponent(route) {
         this.route = route;
         this.id = "";
+        this.type = "";
         this.items = [
             { name: 'ITEM1', category: 'CATEGORY1', id: '1', imgUrl: 'https://kbob.github.io/images/sample-3.jpg', shortDesc: 'This item is a very good one having two legs and one eye' },
             { name: 'ITEM2', category: 'CATEGORY2', id: '2', imgUrl: 'https://kbob.github.io/images/sample-3.jpg', shortDesc: 'This item is a very good one having two legs and two eyes' }
@@ -24,6 +25,7 @@ var OrdersComponent = (function () {
         //init
         this.route.queryParams.subscribe(function (params) {
             var id = params['id'];
+            _this.type = params['type'];
             _this.id = id;
         });
     };

@@ -9,6 +9,7 @@ import { AddItemComponent } from './seller/items/add/add.component';
 import { BuyItemComponent } from './buyer/items/buy/buy.component';
 import { ViewItemComponent } from './seller/items/view/view.component';
 import { OrdersComponent } from './seller/items/orders/orders.component';
+import { HomepageComponent} from './homepage/homepage.component'
 
 export const MODULE_ROUTES: Route[] =[
     { path: 'notfound', component: HomeComponent },
@@ -34,5 +35,6 @@ export const MODULE_COMPONENTS = [
     AddItemComponent,
     ViewItemComponent,
     OrdersComponent,
-    BuyItemComponent
+    BuyItemComponent,
+    HomepageComponent
 ]

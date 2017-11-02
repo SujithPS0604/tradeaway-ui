@@ -14,6 +14,7 @@ import {UserService} from '../service/user.service';
 export class SellerHomeComponent implements OnInit{
     user = {'userName' : '', 'password' : ''};
     id="";
+    type="";
 
 	  constructor(private userService : UserService ,
    		private router: Router,
@@ -40,6 +41,7 @@ export class SellerHomeComponent implements OnInit{
       this.route.queryParams.subscribe( (params )=> {
 	      var id = params['id'];
 	      var type = params['type'];
+        this.type=type;
 
 	      if(!id || !type){
 	         this.router.navigate(['signin'],{ queryParams:  { 'error-message' : 'invalid user' } });

@@ -18,6 +18,7 @@ var SellerHomeComponent = (function () {
         this.route = route;
         this.user = { 'userName': '', 'password': '' };
         this.id = "";
+        this.type = "";
     }
     SellerHomeComponent.prototype.logout = function () {
         var _this = this;
@@ -34,6 +35,7 @@ var SellerHomeComponent = (function () {
         this.route.queryParams.subscribe(function (params) {
             var id = params['id'];
             var type = params['type'];
+            _this.type = type;
             if (!id || !type) {
                 _this.router.navigate(['signin'], { queryParams: { 'error-message': 'invalid user' } });
                 return;

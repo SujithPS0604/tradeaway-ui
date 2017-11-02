@@ -8,6 +8,7 @@ var add_component_1 = require("./seller/items/add/add.component");
 var buy_component_1 = require("./buyer/items/buy/buy.component");
 var view_component_1 = require("./seller/items/view/view.component");
 var orders_component_1 = require("./seller/items/orders/orders.component");
+var homepage_component_1 = require("./homepage/homepage.component");
 exports.MODULE_ROUTES = [
     { path: 'notfound', component: home_component_1.HomeComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
@@ -29,6 +30,7 @@ exports.MODULE_COMPONENTS = [
     add_component_1.AddItemComponent,
     view_component_1.ViewItemComponent,
     orders_component_1.OrdersComponent,
-    buy_component_1.BuyItemComponent
+    buy_component_1.BuyItemComponent,
+    homepage_component_1.HomepageComponent
 ];
 //# sourceMappingURL=dashboard.routes.js.map
